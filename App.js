@@ -1,12 +1,89 @@
+import { useCallback } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
+import Home from './components/home/Home';
+import Header from './layout/header/Header';
+import Statistics from './components/statistics/Statistics';
+import Notifications from './components/notifications/Notifications';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import Settings from './components/settings/Settings';
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    const [fontsLoaded] = useFonts({
+    'SFproRegular': require('./assets/fonts/SF-Pro-Text-Regular.otf'),
+    'SFproMedium': require('./assets/fonts/SF-Pro-Text-Medium.otf'),
+    'SFproSemiBold': require('./assets/fonts/SF-Pro-Text-Semibold.otf'),
+    'SFproBold': require('./assets/fonts/SF-Pro-Text-Bold.otf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+      }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) {
+      return null;
+    }
+  
+  return ( 
+    <SafeAreaView style={{flex: 1}} onLayout={onLayoutRootView}>
+      <LinearGradient
+        colors={['#219BD3', '#0C588A']}
+        locations={[0, 1]}
+        start={{ x: 0, y: 1 }}
+        end={{ x: 0, y: 0 }}
+        style={{flex: 1}}
+      >
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen 
+              name="Home" 
+              component={Home}  
+              options={{
+                title: '',
+                headerStyle: {backgroundColor: 'red', height: 0},
+                gestureEnabled: false,
+              }}
+            />
+            <Stack.Screen 
+              name="Statistics"
+              component={Statistics}  
+              options={{
+                title: '',
+                headerStyle: {backgroundColor: 'red', height: 0},
+                headerLeft: null,
+              }}
+            />
+              <Stack.Screen 
+              name="Notifications"
+              component={Notifications}  
+              options={{
+                title: '',
+                headerStyle: {backgroundColor: 'red', height: 0},
+                headerLeft: null,
+              }}
+            />
+            <Stack.Screen 
+              name="Settings"
+              component={Settings}  
+              options={{
+                title: '',
+                headerStyle: {backgroundColor: 'red', height: 0},
+                headerLeft: null,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </LinearGradient>
+    </SafeAreaView>
   );
 }
 
