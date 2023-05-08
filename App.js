@@ -1,15 +1,16 @@
+import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import { useCallback } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
 import Home from './components/home/Home';
 import Header from './layout/header/Header';
 import Statistics from './components/statistics/Statistics';
 import Notifications from './components/notifications/Notifications';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
 import Settings from './components/settings/Settings';
 
 const Stack = createStackNavigator();
