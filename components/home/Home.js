@@ -55,6 +55,7 @@ const Home = ({navigation}) => {
         </View> 
 
         <FooterNav navigation={navigation} />
+        
         </LinearGradient>
     </View>
 

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         alignItems: 'center',
         gap: 45,
-        marginBottom: 20
+        marginBottom: -40,
     },
     onofIcon: (bgColor) => ({
         alignItems: 'center',

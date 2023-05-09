@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, Button,} from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import CountDown from 'react-native-countdown-component'
 import React, { useEffect, useState } from 'react'
 
 const DatePicker = () => {
