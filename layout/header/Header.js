@@ -35,11 +35,11 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <LogoIcon />
-      <TouchableOpacity onPress={startClick} style={styles.onofIcon(working ? 'rgba(223, 58, 56, 0.9)' : 'rgba(47, 166, 64, 0.9)')}>
+      <TouchableOpacity onPress={startClick} style={styles.onofIcon(working ? 'rgba(47, 166, 64, 0.9)' : 'rgba(223, 58, 56, 0.9)')}>
         <OnOffIcon />
       </TouchableOpacity>
       <CountDown 
-        onPress={() => setShowTime(true)}
+        onPress={() => setShowTime(!working && true)}
         id='0'
         style={{marginTop: -40}}
         size={30}
@@ -59,6 +59,7 @@ const Header = () => {
       setTimer={setTimer} 
       setShowTime={setShowTime} 
       showTime={showTime}
+      workingStatus={working}
       />
     </View>
   )

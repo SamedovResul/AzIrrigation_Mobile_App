@@ -13,20 +13,24 @@ const Card = ({icon, title, desc, currentStatus, waterConsumption}) => {
     useEffect(() => {
         setBtnBgColor(() => {
             switch(currentStatus) {
+                case 'on':
+                    return 'rgba(47, 166, 64, 0.6)';
                 case 'off':
                     return 'rgba(113, 113, 113, 0.5)';
-                case 'full':
+                case 'waterLevel-3':
                     return ' rgba(12, 88, 138, 0.6)';
-                case 'working':
-                    return 'rgba(47, 166, 64, 0.6)';
+                case 'waterLevel-2':
+                    return ' rgba(12, 88, 138, 0.6)';
+                case 'waterLevel-1':
+                    return 'rgba(113, 113, 113, 0.5)';
+                case 'toWater':
+                    return 'rgba(33, 71, 79, 0.6)';
+                case 'notToWater':
+                    return 'rgba(113, 113, 113, 0.5)';
                 case 'notworking':
                     return 'rgba(238, 68, 57, 0.8)';
-                case 'empty':
-                    return 'rgba(238, 68, 57, 0.8)';
-                case 'notToWater':
-                    return 'rgba(238, 68, 57, 0.8)';
                 default:
-                    return 'rgba(113, 113, 113, 0.5)';
+                    return 'rgba(238, 68, 57, 0.8)';
             }
         })
     }, [currentStatus])
@@ -48,12 +52,17 @@ const Card = ({icon, title, desc, currentStatus, waterConsumption}) => {
 
         <View style={styles.cardBottom}>
             <Text style={styles.cardBottomText(btnBgColor)}>
-                {currentStatus == 'off' && "Söndürülüb"}
-                {currentStatus == 'full' && "Doludur"}
-                {currentStatus == 'working' && "İşləyir"}
-                {currentStatus == 'notworking' && "İşləmir"}
-                {currentStatus == 'empty' && "Boşdur"}
+                {currentStatus == 'on' && "İşləyir"}
+                {currentStatus == 'off' &&  "Söndürülüb" }
+               
+                {currentStatus == 'waterLevel-3' && "Doludur"}
+                {currentStatus == 'waterLevel-2' && "su orta səviyyədədi"}
+                {currentStatus == 'waterLevel-1' && "Boşdur"}
+
                 {currentStatus == 'notToWater' && "Suvarılmır"}
+                {currentStatus == 'toWater' && "Suvarılır"}
+
+                {currentStatus == 'notworking' && "İşləmir"}
             </Text>
         </View>
     </View>
